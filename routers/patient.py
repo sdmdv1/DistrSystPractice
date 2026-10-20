@@ -26,7 +26,8 @@ def patientPOST(p: PatientIn):
          }
 
 @router.get("")
-def patientGET(patient: PatientOut):
+def patientGET(p: PatientOut):
+
     return {
            
         }
