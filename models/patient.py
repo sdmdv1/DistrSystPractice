@@ -6,7 +6,6 @@ class PatientIn(BaseModel):
     lastName: str
     sex: str
     birthDate: str
-    age: int
 
 class PatientOut(BaseModel):
     id: str
@@ -15,7 +14,6 @@ class PatientOut(BaseModel):
     lastName: str
     sex: str
     birthDate: str
-    age: int
 
 class PatientBase(BaseModel):
     id: str
@@ -24,4 +22,3 @@ class PatientBase(BaseModel):
     lastName: str
     sex: str
     birthDate: str
-    age: int
