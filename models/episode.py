@@ -2,6 +2,7 @@
 from pydantic import BaseModel
 
 class EpisodeIn(BaseModel):
+    patientId: str
     timestamp: str
     vitals: Vitals
     symptoms: Symptoms

@@ -16,7 +16,7 @@ class PatientOut(BaseModel):
     birthDate: str
 
 class PatientBase(BaseModel):
-    id: str
+    patientId: str
     firstName: str
     middleName: str
     lastName: str

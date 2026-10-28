@@ -7,7 +7,7 @@ def initDB():
     cursor=conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS patients (
-            id TEXT NOT NULL,
+            patient_id TEXT PRIMARY KEY,
             first_name TEXT NOT NULL,
             middle_name TEXT,
             last_name TEXT NOT NULL,
@@ -17,7 +17,8 @@ def initDB():
     ''')
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS episodes (
-            id TEXT NOT NULL,
+            episode_id TEXT PRIMARY KEY,
+            patient_id TEXT NOT NULL REFERENCES patients(patient_id),
             time_stamp TEXT NOT NULL,
             heart_rate_bpm INTEGER,
             blood_pressure_systolic INTEGER,
