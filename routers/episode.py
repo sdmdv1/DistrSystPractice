@@ -63,11 +63,31 @@ def episodeGET(episodeId: str):
            "dyspneaLevel":row[8]
         }
 
-@router.patch("")
-def episodePATCH(patient: EpisodeBase):
-    return {
-           
-        }
+@router.put("")
+def episodePUT(e: EpisodeBase):
+    conn=sqlite3.connect(DB_PATH)
+    try:
+        conn.execute(
+            "UPDATE episodes "
+            "SET time_stamp=?,heart_rate_bpm=?,blood_pressure_systolic=?,blood_pressure_diastolic=?,oxygen_saturation=?,chest_pain_level=?,dyspnea_level=? "
+            "WHERE episode_id=?",
+            (
+                e.timestamp,
+                e.vitals.heartRateBpm,
+                e.vitals.bloodPressureSystolic,
+                e.vitals.bloodPressureDiastolic,
+                e.vitals.oxygenSaturation,
+                e.symptoms.chestPainLevel,
+                e.symptoms.dyspneaLevel,
+                e.episodeId
+            ),
+        )
+        conn.commit()
+    finally:
+        conn.close()
+    return{
+         "message":"Эпизод успешно обновлен"
+         }
 
 @router.delete("")
 def episodeDELETE(id: str):

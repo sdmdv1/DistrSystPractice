@@ -8,13 +8,13 @@ class EpisodeIn(BaseModel):
     symptoms: Symptoms
 
 class EpisodeOut(BaseModel):
-    id: str
+    episodeId: str
     timestamp: str
     vitals: Vitals
     symptoms: Symptoms
 
 class EpisodeBase(BaseModel):
-    id: str
+    episodeId: str
     timestamp: str
     vitals: Vitals
     symptoms: Symptoms
